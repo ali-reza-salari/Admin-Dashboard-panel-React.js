@@ -5,6 +5,8 @@ import Products from "./pages/Products/page.jsx";
 import Orders from "./pages/Orders/page.jsx";
 import Customers from "./pages/Customers/page.jsx";
 import Analytics from "./pages/Analytics/page.jsx";
+import {AiFillSetting} from "react-icons/ai";
+import NotFound from "./pages/NotFound/page.jsx";
 
 const routes = createBrowserRouter([
     {
@@ -30,8 +32,16 @@ const routes = createBrowserRouter([
             {
                 path: "analytics",
                 element: <Analytics />
+            },
+            {
+                path: "settings",
+                element: <AiFillSetting />
             }
         ]
+    },
+    {
+        path: "*",
+        element: <NotFound />,
     }
 ])
 
