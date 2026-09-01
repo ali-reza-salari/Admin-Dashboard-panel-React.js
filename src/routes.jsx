@@ -1,6 +1,10 @@
 import {createBrowserRouter} from "react-router";
 import AdminLayout from "./components/layout/AdminLayout.jsx";
-import Dashboard from "./pages/Dashboard/page.jsx";
+import Overview from "./pages/Overview/page.jsx";
+import Products from "./pages/Products/page.jsx";
+import Orders from "./pages/Orders/page.jsx";
+import Customers from "./pages/Customers/page.jsx";
+import Analytics from "./pages/Analytics/page.jsx";
 
 const routes = createBrowserRouter([
     {
@@ -9,7 +13,23 @@ const routes = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Dashboard />
+                element: <Overview />
+            },
+            {
+                path: "products",
+                element: <Products />
+            },
+            {
+                path: "orders",
+                element: <Orders />
+            },
+            {
+                path: "customers",
+                element: <Customers />
+            },
+            {
+                path: "analytics",
+                element: <Analytics />
             }
         ]
     }
