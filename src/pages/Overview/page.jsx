@@ -1,7 +1,7 @@
 export default function Overview() {
     return (
         <div>
-            <p className={"text-white text-3xl"}>Overview</p>
+            <p className={"text-3xl font-bold"}>Overview</p>
         </div>
     )
 }
