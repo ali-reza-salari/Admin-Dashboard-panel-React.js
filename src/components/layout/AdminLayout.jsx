@@ -10,7 +10,9 @@ export default function AdminLayout() {
             </aside>
             <main className={"min-w-0 flex-1 lg:ml-80 dark:text-white text-black"}>
                 <Header />
-                <Outlet />
+                <div className={"mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:py-10"}>
+                    <Outlet />
+                </div>
             </main>
         </section>
     )
