@@ -1,23 +1,28 @@
+import PagesTitleSection from "../../features/PagesTitleSection/PagesTitleSection.jsx";
+import { FaPlus } from "react-icons/fa6";
+import {useNavigate} from "react-router";
+import useTitle from "../../hooks/useTitle.jsx";
+
 export default function Overview() {
+    useTitle("Overview");
+    const navigate = useNavigate();
+    const AddProductBtn = () => {
+        return <button
+            onClick={() => navigate("/products")}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-700">
+            <FaPlus className={"size-3"} />
+            Add product
+        </button>
+    }
+
     return (
         <>
-            <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-                <div>
-                    <p className="text-sm font-medium text-brand-600 dark:text-brand-300">Monday, October 16</p>
-                    <h1 className="mt-1 text-3xl font-bold tracking-tight">Good morning, Ali Reza</h1>
-                    <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Here’s what’s happening with Vela
-                        today.</p>
-                </div>
-
-                <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-700">
-                    <svg
-                        className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 5v14M5 12h14"/>
-                    </svg>
-                    Add product
-                </button>
-            </div>
+            <PagesTitleSection
+                show_date={"Monday, October 16"}
+                page_title={"Good morning, Ali Reza"}
+                page_description={"Here’s what’s happening with Vela today."}
+                trigger={<AddProductBtn />}
+            />
 
             <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                 <article
