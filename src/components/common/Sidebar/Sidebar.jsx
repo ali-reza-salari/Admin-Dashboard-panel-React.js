@@ -1,4 +1,5 @@
 import {NavLink} from "react-router";
+import sidebarMenus from "../../../data/sidebarMenus.js";
 
 export default function Sidebar() {
     return (
@@ -21,54 +22,14 @@ export default function Sidebar() {
             </div>
 
             <nav className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-1" aria-label="Main navigation">
-                <NavLink
-                    to={"/"}
-                    className={({isActive}) => `${isActive ? "bg-brand-50 text-brand-700 dark:bg-brand-500 dark:text-brand-100 dark:hover:bg-brand-500" : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"} flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold`}
-                    end
-                >
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="7" height="7" rx="1"/>
-                        <rect x="14" y="3" width="7" height="7" rx="1"/>
-                        <rect x="3" y="14" width="7" height="7" rx="1"/>
-                        <rect x="14" y="14" width="7" height="7" rx="1"/>
-                    </svg>
-                    Overview
-                </NavLink>
-
-                <NavLink to={"products"} className={({isActive}) => `${isActive ? "bg-brand-50 text-brand-700 dark:bg-brand-500 dark:text-brand-100 dark:hover:bg-brand-500" : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"} flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold`} end>
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 2h12l3 7-9 13L3 9l3-7Z"/>
-                        <path d="M3 9h18M9 2l3 7 3-7"/>
-                    </svg>
-
-                    Products
-
-                    <span className="ml-auto hidden rounded-md bg-slate-100 px-2 py-0.5 text-xs dark:bg-slate-800 lg:block">248</span>
-                </NavLink>
-
-                <NavLink to={"orders"} className={({isActive}) => `${isActive ? "bg-brand-50 text-brand-700 dark:bg-brand-500 dark:text-brand-100 dark:hover:bg-brand-500" : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"} flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold`} end>
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 4h14l1 16H4L5 4Z"/>
-                        <path d="M9 8h6"/>
-                    </svg>
-                    Orders
-                    <span className="ml-auto hidden rounded-md bg-amber-100 px-2 py-0.5 text-xs text-amber-700 dark:bg-amber-500/15 dark:text-amber-300 lg:block">12</span>
-                </NavLink>
-
-                <NavLink to={"customers"} className={({isActive}) => `${isActive ? "bg-brand-50 text-brand-700 dark:bg-brand-500 dark:text-brand-100 dark:hover:bg-brand-500" : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"} flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold`} end>
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="8" r="4"/>
-                        <path d="M4 21c1.5-4 4.1-6 8-6s6.5 2 8 6"/>
-                    </svg>
-                    Customers
-                </NavLink>
-
-                <NavLink to={"analytics"} className={({isActive}) => `${isActive ? "bg-brand-50 text-brand-700 dark:bg-brand-500 dark:text-brand-100 dark:hover:bg-brand-500" : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"} flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold`} end>
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 19V5M4 19h16M7 15v-4M12 15V7M17 15v-7"/>
-                    </svg>
-                    Analytics
-                </NavLink>
+                {
+                    sidebarMenus.map(menu => (
+                        <NavLink key={menu.id} to={menu.path} className={({isActive}) => `${isActive ? "bg-brand-50 text-brand-700 dark:bg-brand-500 dark:text-brand-100 dark:hover:bg-brand-500" : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"} flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold`} end>
+                            {<menu.icon className={"size-6"} />}
+                            {menu.menu_name}
+                        </NavLink>
+                    ))
+                }
             </nav>
 
             <div className="mt-8 hidden border-t border-slate-200 pt-5 dark:border-slate-800 lg:block">
